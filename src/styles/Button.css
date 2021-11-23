@@ -1,0 +1,16 @@
+.button {
+    border: solid thin lightgray;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.button:hover {
+    background: lightgray;
+    transition: all 0.2s;
+}
+
+.button:active {
+    background: rgb(110, 110, 110);
+    transition: all 0.2s;
+}

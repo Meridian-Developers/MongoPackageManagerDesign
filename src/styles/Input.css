@@ -1,0 +1,9 @@
+.input {
+    background: none;
+    border: none;
+    border-bottom: solid thin gray;
+    padding: 5px;
+}
+
+.input:active {
+}

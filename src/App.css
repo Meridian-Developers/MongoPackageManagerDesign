@@ -1,0 +1,17 @@
+body {
+    background: rgb(54, 54, 54);
+}
+
+.widget-wrapper {
+    background: rgb(240, 240, 240);
+    margin: 20px;
+    padding: 20px;
+    border-radius: 3px;
+    box-shadow: 2px 2px 6px rgb(22, 22, 22);
+}
+
+.widget-header {
+    margin-bottom: 10px;
+    border-bottom: solid thin lightgray;
+    padding-bottom: 10px;
+}
