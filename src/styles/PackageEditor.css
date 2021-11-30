@@ -1,0 +1,14 @@
+.drop {
+    background: rgb(240, 240, 240);
+}
+.dropControl {
+    background: rgb(240, 240, 240);
+}
+.dropMenu {
+    background: rgb(240, 240, 240);
+}
+
+.package-item-wrapper {
+    padding: 5px;
+    border-bottom: dashed thin lightgray;
+}

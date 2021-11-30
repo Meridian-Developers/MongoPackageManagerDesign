@@ -1,0 +1,28 @@
+.package-table {
+    width: -webkit-fill-available;
+    border-collapse: collapse;
+}
+
+.package-table-header {
+    text-align: left;
+}
+
+.package-table-header-cell {
+    font-weight: 300;
+    border-bottom: solid thin lightgray;
+    padding: 5px;
+}
+
+.package-table-row {
+    transition: all 0.1s;
+}
+.package-table-row:hover {
+    background: lightgray;
+    cursor: pointer;
+    transition: all 0.1s;
+}
+
+.package-table-row-cell {
+    padding: 5px;
+    border-bottom: dashed thin lightgray;
+}
