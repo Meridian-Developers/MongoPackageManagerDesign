@@ -1,0 +1,20 @@
+.viewer-wrapper {
+    background: rgb(37, 37, 37);
+    color: white;
+}
+.viewer-body-wrapper {
+}
+
+.viewer-row {
+    margin-bottom: 2px;
+}
+
+.viewer-key {
+}
+.viewer-value {
+}
+.viewer-highlight {
+    border: dashed thin red;
+    background: none;
+    color: red;
+}

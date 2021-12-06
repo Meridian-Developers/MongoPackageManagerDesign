@@ -64,12 +64,40 @@ function PackageEditor() {
     function renderDescFields() {
         return (
             <div style={{ marginTop: "10px" }}>
+                <div
+                    style={{
+                        display: "flex",
+                        justifyContent: "flex-start",
+                        alignItems: "center",
+                    }}
+                >
+                    <div
+                        style={{
+                            width: "-webkit-fill-available",
+                            marginRight: "20px",
+                        }}
+                    >
+                        <div className="editor-label">Package Name</div>
+                        <Input
+                            style={{ width: "-webkit-fill-available" }}
+                            placeholder="Package Name"
+                            defaultValue={pkg.packageName}
+                        />
+                    </div>
+                    <div style={{ width: "-webkit-fill-available" }}>
+                        <div className="editor-label">Status</div>
+                        <Input
+                            style={{ width: "-webkit-fill-available" }}
+                            placeholder="Status"
+                            defaultValue={pkg.status || "N/A"}
+                            disabled
+                        />
+                    </div>
+                </div>
                 <div>
-                    <Input
-                        style={{ width: "-webkit-fill-available" }}
-                        placeholder="Package Name"
-                        defaultValue={pkg.packageName}
-                    />
+                    <div className="editor-label" style={{ marginTop: "10px" }}>
+                        Description
+                    </div>
                     <textarea
                         style={{
                             background: "none",
@@ -77,7 +105,6 @@ function PackageEditor() {
                             maxHeight: "300px",
                             minHeight: "100px",
                             maxWidth: "-webkit-fill-available",
-                            marginTop: "10px",
                             padding: "5px",
                         }}
                         placeholder="Description"
@@ -92,21 +119,34 @@ function PackageEditor() {
                         marginTop: "10px",
                     }}
                 >
-                    <Input
+                    <div
                         style={{
                             width: "-webkit-fill-available",
                             marginRight: "20px",
                         }}
-                        placeholder="Created At"
-                        defaultValue={pkg.createdAt || moment().format()}
-                        disabled
-                    />
-                    <Input
-                        style={{ width: "-webkit-fill-available" }}
-                        placeholder="Status"
-                        defaultValue={pkg.status || "N/A"}
-                        disabled
-                    />
+                    >
+                        <div className="editor-label">Created At</div>
+                        <Input
+                            style={{
+                                width: "-webkit-fill-available",
+                            }}
+                            placeholder="Created At"
+                            defaultValue={pkg.createdAt || moment().format()}
+                            disabled
+                        />
+                    </div>
+                    <div style={{ width: "-webkit-fill-available" }}>
+                        <div className="editor-label">Last Modified</div>
+                        <Input
+                            style={{
+                                width: "-webkit-fill-available",
+                                marginRight: "20px",
+                            }}
+                            placeholder="Last Modified"
+                            defaultValue={pkg.lastModified || moment().format()}
+                            disabled
+                        />
+                    </div>
                 </div>
             </div>
         );
@@ -142,7 +182,16 @@ function PackageEditor() {
                     </tr>
                     {_.map(packages, (pack) => {
                         return (
-                            <tr className="package-table-row">
+                            <tr
+                                className="package-table-row"
+                                onClick={() => {
+                                    window.localStorage.setItem(
+                                        "page",
+                                        "compare"
+                                    );
+                                    window.location.href = "";
+                                }}
+                            >
                                 <td className="package-table-row-cell">
                                     {pack.collection}
                                 </td>
