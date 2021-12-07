@@ -7,6 +7,9 @@ import Dropdown from "react-dropdown";
 import { BiSync, BiPaperPlane, BiSave, BiReply } from "react-icons/bi";
 import { MdChecklistRtl, MdDeleteForever } from "react-icons/md";
 import _ from "lodash";
+import React, { useState } from "react";
+import Modal from "react-modal";
+const crypto = require("crypto");
 
 const optionStyle = {
     display: "flex",
@@ -32,8 +35,7 @@ let options = [
 
 function PackageEditor() {
     const pkg = JSON.parse(localStorage.getItem("package")) || {};
-    const packages = pkg.packages || [];
-
+    const [packages, setPackages] = useState([pkg.packages || []]);
     if (!pkg || !pkg.status) {
         options = [
             <div style={optionStyle}>
@@ -171,7 +173,40 @@ function PackageEditor() {
     function renderPackageList() {
         return (
             <div style={{ marginTop: "20px" }}>
-                <div style={{ marginBottom: "5px" }}>Package List</div>
+                <div style={{ marginBottom: "5px" }}>
+                    Package List{" "}
+                    {!pkg.packages && (
+                        <Button
+                            style={{
+                                width: "25%",
+                                textAlign: "center",
+                                display: "inline",
+                                paddingLeft: "10px",
+                            }}
+                            onClick={() => {
+                                setPackages(
+                                    packages.concat({
+                                        collection: "N/A",
+                                        key: "N/A",
+                                        body: {
+                                            _id:
+                                                crypto
+                                                    .randomBytes(16)
+                                                    .toString("hex") + "rsj",
+                                            contentName: "PasswordResetEmail",
+                                            contentType: "notification",
+                                            siteName: "GUC",
+                                            html: '<p>To reset your Greenville Utilities My Account password, <a href="${url}">Click here.</a> If you do not want to change your password, please disregard this message.</p>',
+                                            subject: "Password Reset",
+                                        },
+                                    })
+                                );
+                            }}
+                        >
+                            click me
+                        </Button>
+                    )}
+                </div>
                 <table className="package-table">
                     <tr className="package-table-header">
                         <th className="package-table-header-cell">
@@ -185,11 +220,35 @@ function PackageEditor() {
                             <tr
                                 className="package-table-row"
                                 onClick={() => {
-                                    window.localStorage.setItem(
-                                        "page",
-                                        "compare"
-                                    );
-                                    window.location.href = "";
+                                    if (pkg.packages) {
+                                        window.localStorage.setItem(
+                                            "page",
+                                            "compare"
+                                        );
+                                        window.location.href = "";
+                                    } else {
+                                        <Modal
+                                            isOpen={true}
+                                            style={{
+                                                overlay: {
+                                                    backgroundColor:
+                                                        "rgb(192,192,192,0.5)",
+                                                },
+                                                content: {
+                                                    top: "50",
+                                                    left: "50",
+                                                    width: 400,
+                                                    borderRadius: 10,
+                                                    textAlign: "center",
+                                                    height: "50",
+                                                    backgroundColor: "white",
+                                                },
+                                            }}
+                                            contentLabel="Message"
+                                        >
+                                            test
+                                        </Modal>;
+                                    }
                                 }}
                             >
                                 <td className="package-table-row-cell">
